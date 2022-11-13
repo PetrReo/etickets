@@ -15,14 +15,14 @@
                   <p class="card-text">{{ item.description }}</p>
                 </div>
                 <div class="card-footer">
-                  <small class="text-muted"><a class="btn btn-success" href="{% url "shop:cart" item.slug %}">Add to Cart</a></small>
+                  <small class="text-muted"><a class="btn btn-success" href="{% url "shop:cart" item.slug %}">Přidejte do košíku</a></small>
                 </div>
               </div>
             </div>
 {% empty %}
     <div class="card w-100">
     <div class="card-body">
-        <h4>Item not available</h4>
+        <h4>Není k dispozici</h4>
     </div>
     </div>
 {% endfor %}

@@ -24,31 +24,31 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="/">Ecommerce Shop</a>
+        <a class="navbar-brand" href="/">Zde si seženete lístek na vše</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="{% url "shop:home" %}">Home
+              <a class="nav-link" href="{% url "shop:home" %}">Hlavní stránka
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://github.com/hereshem/django-ecommerce">About</a>
+              <a class="nav-link" href="https://github.com/hereshem/django-ecommerce">O nás</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url "shop:api_tickets" %}">APIs</a>
             </li>
               <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Můj profil</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {% if user.is_authenticated %}
-                            <a class="dropdown-item" href="{% url "shop:signout" %}">Sign Out</a>
+                            <a class="dropdown-item" href="{% url "shop:signout" %}">Odhlašte se</a>
                         {% else %}
-                            <a class="dropdown-item" href="{% url "shop:signin" %}">Sign In</a>
-                            <a class="dropdown-item" href="{% url "shop:signup" %}">Signup</a>
+                            <a class="dropdown-item" href="{% url "shop:signin" %}">Přihlate se</a>
+                            <a class="dropdown-item" href="{% url "shop:signup" %}">Registrujte se</a>
                         {% endif %}
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{% url "shop:checkout" %}">Checkout</a>
@@ -58,10 +58,10 @@
           </ul>
 
             <form class="form-inline my-2 my-lg-0 mr-4" action="{% url 'shop:search' %}">
-                <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" name="q" type="search" placeholder="Vyhledejte událost" aria-label="Search">
+                <button class="btn btn-primary my-2 my-sm-0" type="submit">Hledat</button>
             </form>
-            <a href="/mycart" class="btn btn-success">🛒{{ request.session.data.count }} Item{{ request.session.data.count|pluralize }}</a>
+            <a href="/mycart" class="btn btn-success">🛒{{ request.session.data.count }} Nákup{{ request.session.data.count|pluralize }}</a>
         </div>
       </div>
     </nav>
@@ -76,7 +76,7 @@
           <h1 class="my-4">Lístkovač</h1>
           <div class="list-group">
               {% for e in events %}
-                  <a href="{% url "shop:events" c.slug %}" class="list-group-item">{{ e.name }}</a>
+                  <a href="{% url "shop:events" e.slug %}" class="list-group-item">{{ e.name }}</a>
               {% endfor %}
 {#            <a href="#" class="list-group-item">Event 1</a>#}
 {#            <a href="#" class="list-group-item">Event 2</a>#}
@@ -206,7 +206,13 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Ecommerce Shop 2018</p>
+        <p class="m-0 text-center text-white">
+
+            Tvorba webových stránek, Petr Skůpa •
+            <a href = "mailto:skupapetr@icloud.com = Feedback&body = Message">
+            skupapetr@icloud.com
+            </a>
+            © 2022</p>
       </div>
       <!-- /.container -->
     </footer>

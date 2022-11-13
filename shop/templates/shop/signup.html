@@ -5,7 +5,7 @@
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}
 
-<title>{% block title %}SignUp to eCommerce Shop{% endblock %}</title>
+<title>{% block title %}SignUp Lístkovač • Registrujte se{% endblock %}</title>
 
 <div class="container">
     {% bootstrap_messages %}
@@ -13,16 +13,16 @@
         <div class="col-lg-6 offset-lg-3 col-sm-10 offset-sm-1">
             <div class="card my-5">
                 <div class="card-header text-center">
-                    Sign Up to eCommerce Shop
+                    Lístkovač • Registrujte se
                 </div>
                 <div class="card-body">
                     <form action="" method="post">
                         {% csrf_token %}
                         {% bootstrap_form form %}
                     {#    {{ form.as_p }}#}
-                        <input type="submit" class="btn btn-success text-center w-100 mb-3" value="Sign Up">
-                        <a href="{% url "shop:signin" %}" class="small">Sign In</a>
-                        <a href="/" class="float-right small">Home</a>
+                        <input type="submit" class="btn btn-success text-center w-100 mb-3" value="Registrovat">
+                        <a href="{% url "shop:signin" %}" class="small">Přihlásit se k existujícímu účtu</a>
+                        <a href="/" class="float-right small">Hlavní stránka</a>
                     </form>
                 </div>
             </div>

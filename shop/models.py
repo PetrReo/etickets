@@ -7,9 +7,13 @@ from django.db import models
 class Event(models.Model):
     name = models.CharField(max_length=250)
     slug = AutoSlugField(populate_from='name')
+    performer = models.CharField(max_length=200, null=True)
     image = models.ImageField(upload_to="events", blank=True)
+
     description = models.TextField(blank=True)
-    featured = models.BooleanField(default=False)
+
+
+    #featured = models.BooleanField(default=False)
     active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
@@ -27,23 +31,22 @@ class Ticket(models.Model):
 
     name = models.CharField(max_length=250)
     slug = AutoSlugField(populate_from='name')
+    city = models.CharField(max_length=200, null=True)  # lze dodělat jako model
+    location = models.CharField(max_length=200, null=True)
     description = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to="tickets", blank=True)
-    #city = models.CharField(max_length=200) #lze dodělat jako model
-    performer = models.CharField(max_length=200)
-
-    date = models.DateField(blank=True)
-    time = models.TimeField(blank=True)
+    date = models.DateField(blank=True, null=True)
+    time = models.TimeField(blank=True, null=True)
     price = models.DecimalField(max_digits=15, decimal_places=2, default=0.0)
+
+    ticket_seat_nr = models.IntegerField(default=0)
+    #ticket_reserved_nr = models.IntegerField(default=0)
+    ticket_stand_nr = models.IntegerField(default=20)
 
     active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    '''
-    ticket_seat_nr = models.IntegerField(default=0)
-    #ticket_reserved_nr = models.IntegerField(default=0)
-    ticket_stand_nr = models.IntegerField(default=20)
-    '''
+
 
     def __str__(self):
         return self.name
